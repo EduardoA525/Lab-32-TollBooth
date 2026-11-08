@@ -11,7 +11,7 @@ using namespace std;
 
 const int STARTING_GROUP = 2;
 
-
+void displayLane(deque<Car> tollLane);
 
 int main(){
     srand(time(0));
@@ -23,7 +23,28 @@ int main(){
         tollLane.push_back(tempCar);
     }
 
+    cout << "Initial Queue: " << endl;
+    displayLane(tollLane);
+
+    //for testing
+    cout << "\nFirst car in line: ";
+    tollLane.front().print();
+
+    cout << "Back car in line: ";
+    tollLane.back().print();
 
 
     return 0;
+}
+
+void displayLane(deque<Car> tollLane){
+    if (tollLane.empty()){
+        cout << "\nEmpty" << endl;
+    }
+    else {
+        for (int i = 0; i < tollLane.size(); i++){
+            cout << " ";
+            tollLane[i].print();
+        }
+    }
 }
