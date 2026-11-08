@@ -27,16 +27,14 @@ int main(){
     cout << "Initial Queue: " << endl;
     displayLane(tollLane);
 
-    cout << "test" << endl;
     startTollSim(tollLane);
-
 
     return 0;
 }
 
 void displayLane(deque<Car> tollLane){
     if (tollLane.empty()){
-        cout << "\nEmpty" << endl;
+        cout << " Empty" << endl;
     }
     else {
         for (int i = 0; i < tollLane.size(); i++){
@@ -71,9 +69,9 @@ void startTollSim(deque<Car>& tollLane) {
             cout << "Time: " << round << " Operation: Joined Lane: ";
             temp.print();
         }
+
+        cout << "Queue: " << endl;
+        displayLane(tollLane);
+
     }
-
-    cout << "Queue: " << endl;
-    displayLane(tollLane);
-
 }
