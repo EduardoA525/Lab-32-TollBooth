@@ -12,6 +12,7 @@ using namespace std;
 const int STARTING_GROUP = 2;
 
 void displayLane(deque<Car> tollLane);
+void startTollSim(deque<Car>& tollLane);
 
 int main(){
     srand(time(0));
@@ -26,12 +27,8 @@ int main(){
     cout << "Initial Queue: " << endl;
     displayLane(tollLane);
 
-    //for testing
-    cout << "\nFirst car in line: ";
-    tollLane.front().print();
-
-    cout << "Back car in line: ";
-    tollLane.back().print();
+    cout << "test" << endl;
+    startTollSim(tollLane);
 
 
     return 0;
@@ -47,4 +44,36 @@ void displayLane(deque<Car> tollLane){
             tollLane[i].print();
         }
     }
+}
+
+void startTollSim(deque<Car>& tollLane) {
+    int round = 0;
+    const int leavePercent = 55;
+
+    while (!tollLane.empty()) {
+        round++;
+
+        int randNum = rand() % 100;
+
+        if (randNum < leavePercent) {
+            Car temp = tollLane.front();
+
+            cout << "Time: " << round << " Operation: Car paid: ";
+            temp.print();
+
+            tollLane.pop_front();
+        }
+        else {
+            Car temp;
+
+            tollLane.push_back(temp);
+
+            cout << "Time: " << round << " Operation: Joined Lane: ";
+            temp.print();
+        }
+    }
+
+    cout << "Queue: " << endl;
+    displayLane(tollLane);
+
 }
